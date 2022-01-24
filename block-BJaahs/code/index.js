@@ -1,4 +1,4 @@
-// Without Object
+//- Without Object
 
 let title = "title";
 let options = ["option1", "option2", "option3", "option4"];
@@ -6,15 +6,17 @@ let correctAnswerIndex = 2;
 function isAnswerCorrect(index) {
   return index === correctAnswerIndex;
 }
-function getCorrectAnswer() {
-  return options[correctAnswerIndex];
+
+
+function getCorrectAnswer(){
+    return options[correctOption];
 }
 
 // With Object
 
 let question = {
-  title: "title",
-  options: ["option1", "option2", "option3", "option4"],
+  title: "Where is the capital of Jordan",
+  options: ["tashkent", "amaan", "kuwait city", "Nairobi"],
   correctAnswerIndex: 2,
   isAnswerCorrect(index) {
     return index === question.correctAnswerIndex;
@@ -26,14 +28,22 @@ let question = {
 
 // Using function to create object
 
-function createQues1(title, options, correctAnswerIndex) {
-  let ques = {};
-  ques.title = title;
-  ques.options = options;
-  ques.correctAnswerIndex = correctAnswerIndex;
-  ques.isAnswerCorrect = function (index) {
-    return index === ques.correctAnswerIndex;
-  };
+
+
+
+//Organize using object
+function createObj(title,options,correctAnswerIndex){
+let question={};
+    question.title=title;
+    question.options=options;
+    question.correctOption=correctAnswerIndex,
+    question.isAnswerCorrect=(index)=>{
+        if(index===question.correctOption){
+            return true;
+        }else{
+            return false;
+        }
+    };
   ques.getCorrectAnswer = function () {
     return ques.options[correctAnswerIndex];
   };
@@ -42,28 +52,25 @@ function createQues1(title, options, correctAnswerIndex) {
 
 // Using 'this' keyword
 
-function createQues2(title, options, correctAnswerIndex) {
-  let ques = {};
-  ques.title = title;
-  ques.options = options;
-  ques.correctAnswerIndex = correctAnswerIndex;
-  ques.isAnswerCorrect = function (index) {
-    return index === this.correctAnswerIndex;
-  };
-  ques.getCorrectAnswer = function () {
-    return this.options[correctAnswerIndex];
+return question;
+
+createObj('Where is the capital of Jordan',['Tashkent', 'Amaan', 'Kuwait City', 'Nairobi'],1);
+const testData = {
+    title: 'Where is the capital of Jordan',
+    options: ['Tashkent', 'Amaan', 'Kuwait City', 'Nairobi'],
+    correctAnswerIndex: 1,
   };
   return ques;
-}
+
 
 let firstQuestion = createQues1(
-  "Capital of Japan",
-  ["India", "Sevilla", "Tokyo", "Las Palmas"],
+  "Capital of Russia",
+  ["India", "Moscow", "America", "canada"],
   2
 );
 let secondQuestion = createQues2(
   "Capital of India",
-  ["New York", "Delhi", "Texas", "California"],
+  ["Chennai", "Delhi", "Banglore", "Hyderabad"],
   1
 );
 let thirdQuestion = createQues1(
