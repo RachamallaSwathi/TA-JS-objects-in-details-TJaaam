@@ -5,8 +5,12 @@
 /*** CHALLENGE 1 of 1 ***/
 
 function makePerson(name, age) {
-  // add code here
+  // add code herlet obj={}
+  obj.name=name;
+  obj.age=age;
+  return obj;
 }
+
 
 var vicky = makePerson('Vicky', 24);
 
@@ -22,6 +26,9 @@ var vicky = makePerson('Vicky', 24);
 
 var personStore = {
   // add code here
+  greet:function(){
+    console.log('hello');
+  }
 };
 
 // /********* Uncomment this line to test your work! *********/
@@ -31,6 +38,19 @@ var personStore = {
 
 function personFromPersonStore(name, age) {
   // add code here
+  let obj=Object.create(greetMethod);
+  obj.name=name;
+  obj.age=age;
+  return obj;
+}
+let greetMethod={
+  greet:function(){
+ 
+  console.log('hello');
+},
+  introduce:function(){
+    console.log('Hi, my name is Sandra')
+  }
 }
 
 var sandra = personFromPersonStore('Sandra', 26);
@@ -54,6 +74,13 @@ var sandra = personFromPersonStore('Sandra', 26);
 
 function PersonConstructor() {
   // add code here
+  PersonFromConstructor.prototype={
+    greet:function(){
+      console.log('hello');
+    },
+    introduce:function(){
+      console.log('Hi, my name is Sandra')
+    }
 }
 
 // /********* Uncomment this line to test your work! *********/
@@ -64,6 +91,8 @@ var simon = new PersonConstructor();
 
 function personFromConstructor(name, age) {
   // add code here
+  this.name=name;
+  this.age=age;
 }
 
 var mike = personFromConstructor('Mike', 30);
@@ -90,6 +119,9 @@ class PersonClass {
   }
 
   // add code here
+  greet(){
+    console.log('hello');
+  }
 }
 
 // /********* Uncomment this line to test your work! *********/
@@ -99,7 +131,17 @@ var george = new PersonClass();
 /*** CHALLENGE 2 of 3 ***/
 
 // add code here
+class DeveloperClass {
+  constructor(name,num) {
+    // add code here
+    this.name=name;
+    this.num=num;
+  }
 
+  introduce(){
+     console.log(`Hello World, my name is ${this.name}`);
+   }
+}
 // /********* Uncomment these lines to test your work! *********/
 // var thai = new DeveloperClass('Thai', 32);
 // console.log(thai.name); // -> Logs 'Thai'
@@ -127,7 +169,17 @@ var adminFunctionStore /* Put code here */;
 
 function adminFactory(name, score) {
   // Put code here
-}
+  class AdminFactory extends UserFactory {
+    constructor(name, score){
+      super(name,score);
+      this.type = 'Admin';
+  
+    }sharePublicMessage(){
+      console.log( `Welcome users`);
+    } 
+  
+    
+  }
 
 /* Put code here for a method called sharePublicMessage*/
 
